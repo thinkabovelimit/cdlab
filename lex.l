@@ -13,7 +13,7 @@ int isnew(char buffer[]);
 
 (auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|print|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while){1} { printf("%s is a keyword\n", yytext); }
 
-["+""-""*""/""="] { if (isnew(yytext)) printf("%s is an operator\n", yytext); }
+["+"-""*""/""="] { if (isnew(yytext)) printf("%s is an operator\n", yytext); }
 
 [A-Za-z][A-Za-z0-9]* { if (isnew(yytext)) printf("%s is an identifier\n", yytext); }
 
