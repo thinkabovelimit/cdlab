@@ -13,7 +13,7 @@ void check(){
         }
     }
     for(z=0;z<c;z++){
-        if(stk[z]=='E' && stk[z+1]=='+' && stk[z+2]=='E'){
+        if(stk[z]=='E' && stk[z+1]=='+' && stk[z+2]=='E'){// if stack is in the form E->E+E then reduce to E
             stk[z]='E';
             stk[z+1]='\0';
             stk[z+2]='\0';
@@ -22,7 +22,7 @@ void check(){
         }
     }
     for(z=0;z<c;z++){
-        if(stk[z]=='E' && stk[z+1]=='*' && stk[z+2]=='E'){
+        if(stk[z]=='E' && stk[z+1]=='*' && stk[z+2]=='E'){ // If stack is in the form E->E*E then reduce to E
             stk[z]='E';
             stk[z+1]='\0';
             stk[z+2]='\0';
@@ -31,7 +31,7 @@ void check(){
         }
     }
     for(z=0;z<c;z++){
-        if(stk[z]=='(' && stk[z+1]=='E' && stk[z+2]==')'){
+        if(stk[z]=='(' && stk[z+1]=='E' && stk[z+2]==')'){ //if stack is in the form E->(E) then reduce to E
               stk[z]='E';
             stk[z+1]='\0';
             stk[z+2]='\0';
@@ -42,12 +42,12 @@ void check(){
 
 }
 void check_accept(){
-    if(stk[1]=='E'){
+    if(strlen(stk)<=2){
         printf("\n");
-        printf("$%s\tACCEPT",stk);
+        printf("$%s\tACCEPT",stk); //Check the stack if stack contains only E then accept
     }
     else{
-        printf("\nREJECT");
+        printf("\nREJECT"); //If the stack contains more than E then reject
     }
 }
 
@@ -81,4 +81,7 @@ int main(){
 /*
  sample input
  id+id*id+id
+
+ Output
+    accept
  */
